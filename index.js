@@ -26,3 +26,31 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 document.getElementById('closePopup').addEventListener('click', function() {
     document.getElementById('successPopup').style.display = 'none';
 });
+
+// Toggle password visibility
+document.getElementById('togglePassword').addEventListener('click', function() {
+    const passwordInput = document.getElementById('password');
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+    
+    // Toggle eye icon
+    this.querySelector('i').classList.toggle('fa-eye');
+    this.querySelector('i').classList.toggle('fa-eye-slash');
+});
+
+// Profile dropdown functionality
+const profileIcon = document.getElementById('profile');
+const dropdown = document.getElementById('dropdown');
+
+profileIcon.addEventListener('click', function() {
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+});
+
+// Logout functionality
+document.getElementById('logout').addEventListener('click', function() {
+    // Hide portfolio and show login
+    document.querySelector('.login-container').style.display = 'block';
+    portfolio.style.display = 'none';
+    document.body.classList.remove('dark-theme');
+    dropdown.style.display = 'none'; // Hide dropdown
+});
