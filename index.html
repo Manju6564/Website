@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Website</title>
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
     <div class="login-container">
-      <form id="loginForm">
-        <h2>Login</h2>
-        <div class="input-group">
-          <input type="text" placeholder="Username" id="username" required />
-        </div>
-        <div class="input-group">
-          <input
-            type="password"
-            placeholder="Password"
-            id="password"
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-        <p id="error" class="error-message"></p>
-      </form>
+        <form id="loginForm">
+            <h2>Login</h2>
+            <div class="input-group">
+                <input type="text" placeholder="Username" id="username" required>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Password" id="password" required>
+            </div>
+            <button type="submit">Login</button>
+            <p id="error" class="error-message"></p>
+        </form>
     </div>
 
-    <div class="portfolio-container" id="portfolio" style="display: none">
-      <h1>My Portfolio</h1>
-      <p>Welcome to my portfolio! Here are some of my projects:</p>
-      <ul>
-        <li>Project 1</li>
-        <li>Project 2</li>
-        <li>Project 3</li>
-      </ul>
+    <div class="portfolio-container" id="portfolio" style="display: none;">
+        <h1>My Portfolio</h1>
+        <p>Welcome to my portfolio! Here are some of my projects:</p>
+        <ul>
+            <li>Project 1</li>
+            <li>Project 2</li>
+            <li>Project 3</li>
+        </ul>
     </div>
 
+      <!-- Success Popup -->
+      <div id="successPopup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <span class="close" id="closePopup">&times;</span>
+            <p>Login successful! Welcome to your portfolio.</p>
+        </div>
+    </div>
     <script src="index.js"></script>
-  </body>
+</body>
 </html>
