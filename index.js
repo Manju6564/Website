@@ -1,56 +1,63 @@
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
+const validUsername = "user";
+const validPassword = "pass";
+let idleTime = 0;
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const errorMessage = document.getElementById('error');
-    const portfolio = document.getElementById('portfolio');
-    const successPopup = document.getElementById('successPopup');
+function login() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const errorMessage = document.getElementById("error-message");
 
-    // Simple login validation (for demo purposes)
-    if (username === 'user' && password === 'pass') {
-        document.querySelector('.login-container').style.display = 'none';
-        portfolio.style.display = 'block';
-        
-        // Change background and text color for dark theme
-        document.body.classList.add('dark-theme');
-        
-        // Show success popup
-        successPopup.style.display = 'flex';
+    if (username === validUsername && password === validPassword) {
+        errorMessage.textContent = ""; // Clear any error message
+        document.getElementById("loginContainer").style.display = "none";
+        document.getElementById("profileContainer").style.display = "block";
+        resetIdleTimer(); // Start idle timer
     } else {
-        errorMessage.textContent = 'Invalid username or password!';
+        errorMessage.textContent = "Invalid credentials. Please try again.";
     }
-});
+}
 
-// Close popup
-document.getElementById('closePopup').addEventListener('click', function() {
-    document.getElementById('successPopup').style.display = 'none';
-});
+function togglePassword() {
+    const passwordField = document.getElementById("password");
+    const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+    passwordField.setAttribute("type", type);
+}
 
-// Toggle password visibility
-document.getElementById('togglePassword').addEventListener('click', function() {
-    const passwordInput = document.getElementById('password');
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
-    
-    // Toggle eye icon
-    this.querySelector('i').classList.toggle('fa-eye');
-    this.querySelector('i').classList.toggle('fa-eye-slash');
-});
+function toggleDropdown() {
+    const dropdownContent = document.getElementById("dropdownContent");
+    dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+}
 
-// Profile dropdown functionality
-const profileIcon = document.getElementById('profile');
-const dropdown = document.getElementById('dropdown');
+function logout() {
+    document.getElementById("profileContainer").style.display = "none";
+    document.getElementById("loginContainer").style.display = "flex"; // Show login again
+    clearIdleTimer(); // Clear timer on logout
+}
 
-profileIcon.addEventListener('click', function() {
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-});
+// Idle Timer Functions
+function resetIdleTimer() {
+    idleTime = 0;
+    document.body.addEventListener('mousemove', idleReset);
+    document.body.addEventListener('keypress', idleReset);
+    clearInterval(idleInterval);
+    idleInterval = setInterval(checkIdleTime, 1000); // Check every second
+}
 
-// Logout functionality
-document.getElementById('logout').addEventListener('click', function() {
-    // Hide portfolio and show login
-    document.querySelector('.login-container').style.display = 'block';
-    portfolio.style.display = 'none';
-    document.body.classList.remove('dark-theme');
-    dropdown.style.display = 'none'; // Hide dropdown
-});
+function idleReset() {
+    idleTime = 0; // Reset idle time on activity
+}
+
+function checkIdleTime() {
+    idleTime++;
+    if (idleTime >= 300) { // 300 seconds = 5 minutes
+        logout(); // Logout after 5 minutes
+    }
+}
+
+function clearIdleTimer() {
+    clearInterval(idleInterval);
+    document.body.removeEventListener('mousemove', idleReset);
+    document.body.removeEventListener('keypress', idleReset);
+}
+
+let idleInterval = setInterval(checkIdleTime, 1000); // Start idle check
