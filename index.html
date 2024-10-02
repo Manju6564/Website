@@ -3,52 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Website</title>
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Login Page</title>
 </head>
 <body>
-    <div class="login-container">
-        <form id="loginForm">
+    <div class="login-container" id="loginContainer">
+        <div class="login-box">
             <h2>Login</h2>
-            <div class="input-group">
-                <input type="text" placeholder="Username" id="username" required>
+            <input type="text" id="username" placeholder="Username" required>
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Password" required>
+                <span class="eye-icon" id="togglePassword" onclick="togglePassword()">👁️</span>
             </div>
-            <div class="input-group password-group">
-                <input type="password" placeholder="Password" id="password" required>
-                <span class="toggle-password" id="togglePassword"><i class="fas fa-eye"></i></span>
-            </div>
-            <button type="submit">Login</button>
-            <p id="error" class="error-message"></p>
-        </form>
+            <button onclick="login()">Login</button>
+            <p id="error-message" class="error-message"></p>
+        </div>
     </div>
 
-    
-  
-    <div class="portfolio-container" id="portfolio" style="display: none;">
-      <div class="header">
-          <div class="profile" id="profile">
-              <i class="fas fa-user-circle" style="font-size: 24px;"></i>
-              <div class="dropdown" id="dropdown">
-                  <p id="logout">Logout</p>
-              </div>
-          </div>
-      </div>
-      <h1>My Portfolio</h1>
-      <p>Welcome to my portfolio! Here are some of my projects:</p>
-      <ul>
-          <li>Project 1</li>
-          <li>Project 2</li>
-          <li>Project 3</li>
-      </ul>
-  </div>
-  
-
-    <!-- Success Popup -->
-    <div id="successPopup" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span class="close" id="closePopup">&times;</span>
-            <p>Login successful! Welcome to your portfolio.</p>
+    <div class="profile-container" id="profileContainer" style="display: none;">
+        <header>
+            <h1>My Profile</h1>
+        </header>
+        <div class="container">
+            <div class="left-container">
+                <img src="profile.jpg" alt="Profile Picture" class="profile-pic" />
+                <div class="resume-text">
+                    <h3>Resume</h3>
+                    <p>
+                        Manjunath Reddy Dwaram<br>
+                        Software Developer<br>
+                        Experience: 2.8 yrs<br>
+                        - Company A: 2021-Present<br>
+                         
+                        Skills:<br>
+                        - JavaScript<br>
+                        - HTML/CSS<br>
+                        - React
+                    </p>
+                </div>
+            </div>
+            <div class="right-container">
+                <h3>Projects</h3>
+                <p>
+                    - Project A: Description of Project A.<br>
+                    - Project B: Description of Project B.
+                </p>
+                <div class="button-container">
+                    <a href="resume.pdf" class="view-button" target="_blank">View Resume</a>
+                    <a href="resume.pdf" class="download-button" download>Download Resume</a>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <span class="profile-icon" onclick="toggleDropdown()">👤</span>
+            <div class="dropdown-content" id="dropdownContent">
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
         </div>
     </div>
 

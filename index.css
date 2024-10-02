@@ -1,53 +1,58 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background 0.5s ease;
-    background: linear-gradient(135deg, #6b6bff, #ff6b6b); /* Initial gradient */
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #6b6bff, #ff2626);
+    color: white;
 }
 
 .login-container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    box-sizing: border-box;
 }
 
-h2 {
-    margin-bottom: 20px;
+.login-box {
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 40px; /* Increased padding */
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 300px; /* Increased width */
 }
 
-.input-group {
-    margin-bottom: 15px;
+.login-box h2 {
+    color: black; /* Change font color of login text to black */
 }
 
 input {
-    width: 100%;
+    margin: 10px 0; /* Adjust margin for consistency */
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: none;
+    border-radius: 5px;
+    width: calc(100% - 20px); /* Full width minus padding */
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background: #6b6bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
+.password-container {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 15px;
     cursor: pointer;
 }
 
-button:hover {
-    background: #5757e8;
+button {
+    width: 25%; /* Full width */
+    padding: 8px; /* Increased padding for better touch target */
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    color: #6b6bff;
+    cursor: pointer;
 }
 
 .error-message {
@@ -55,102 +60,97 @@ button:hover {
     margin-top: 10px;
 }
 
-.portfolio-container {
-    text-align: center;
-    color: white; /* White text for better contrast */
-    display: none; /* Hide until login */
-}
 
-.dark-theme {
-    background-color: #2c2c2c; /* Dark background */
-    color: #e0e0e0; /* Light text color */
-}
-
-.dark-theme .login-container {
-    background: rgba(255, 255, 255, 0.1); /* Slightly darker for dark theme */
-}
-
-.dark-theme .portfolio-container {
-    color: #e0e0e0; /* Light text for portfolio */
-}
-
-.popup {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.popup-content {
-    background: white;
+.profile-container {
+    background-image: linear-gradient(to right top, #000000, #3b3b3b, #777777, #b9b9b9, #ffffff);
     padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.close {
-    cursor: pointer;
-    font-size: 20px;
-    float: right;
-}
-
-/* Existing styles... */
-
-.password-group {
-    position: relative;
-}
-
-.toggle-password {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #6b6bff; /* Change color as needed */
-}
-
-.toggle-password:hover {
-    color: #5757e8; /* Change color on hover */
-}
-
-
-/* Existing styles... */
-
-.header {
+    color: black; /* Change text color for better readability */
+    height: calc(100vh - 40px); /* Full height minus some padding */
     display: flex;
-    justify-content: flex-end;
-    padding: 10px;
-    position: relative; /* Make the header relative for positioning dropdown */
-}
-.profile {
-    position: relative;
-    cursor: pointer;
-    color: rgb(143, 90, 227); /* Adjust as needed */
+    flex-direction: column; /* Allow for vertical stacking */
 }
 
+.container {
+    display: flex;
+    flex: 1; /* Take full height available */
+    padding: 0; /* Remove padding to eliminate space */
+}
+
+.left-container {
+    flex: 1;
+    margin-right: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background for contrast */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.right-container {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background for contrast */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+.view-button, .download-button {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.view-button {
+    background-color: #28a745; /* Green for view button */
+}
+
+.download-button {
+    background-color: #008CBA; /* Blue for download button */
+}
+
+/* Dropdown Styles */
 .dropdown {
+    position: absolute;
+    top: 20px; /* Adjust vertical position */
+    right: 20px; /* Align to the right */
+}
+
+.profile-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.dropdown-content {
     display: none;
     position: absolute;
     right: 0;
-    top: 40px;
-    background: white;
+    background-color: white;
+    min-width: 160px;
+    z-index: 1;
     border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
 }
 
-.dropdown p {
-    padding: 10px 15px;
-    cursor: pointer;
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
-.dropdown p:hover {
-    background: #f0f0f0; /* Highlight on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
 }
 
+.dropdown:hover .dropdown-content {
+    display: block;
+}
